@@ -1,10 +1,17 @@
 const fullScreenButton = document.querySelector('.full');
 const pixi = document.querySelector('.pixi');
 
+let hue = Math.random() * 360;
+let grayScale = Math.random() * 50 + 50;
+let invert = Math.random() * 100;
+pixi.style.filter = `hue-rotate(${hue}deg)`;
+pixi.style.filter = `grayscale(${grayScale}%)`;
+
 setInterval(() => {
   console.log('ran interval');
-  let hue = Math.random() * 360;
-  let grayScale = Math.random() * 100;
+  hue = Math.random() * 360;
+  grayScale = Math.random() * 100;
+  invert = Math.random() * 100;
   pixi.style.filter = `hue-rotate(${hue}deg)`;
   pixi.style.filter = `grayscale(${grayScale}%)`;
 }, 10000);
@@ -27,6 +34,7 @@ horn.addEventListener('ended', () => {
 class glitch {
   constructor(el) {
     // create stage
+
     const imgLink = './CRANE.jpg';
     const canvas = document.querySelector('.pixi');
 
@@ -123,7 +131,7 @@ class glitch {
       x: this.randomIntFromInterval(-150, 150),
       y: this.randomIntFromInterval(-50, 50),
       onComplete() {
-        THAT.img.filters[1].slices = 120;
+        THAT.img.filters[1].slices = 20;
         THAT.img.filters[1].direction = THAT.randomIntFromInterval(-175, 175);
       },
     });
